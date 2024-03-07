@@ -69,6 +69,11 @@ const { title, description,heroImage } = Astro.props;
 	</body>
 	<script is:inline src="https://www.paypal.com/sdk/js?client-id=AVMpLFCadvhWxOhWaTwU-iVjWcsPTHjEeCgEJCHdWJ-FA1FRUHWCDZf0Kbq_ZyCdzlVke7__Y7TbXkJm"></script>
 	<script is:inline>
+		let newPrice;
+		let priceArr = document.querySelectorAll('p');
+		priceArr.forEach(price =>{
+			newPrice = price.slice(1)
+		})
 		paypal.Buttons({
         createOrder: function(data, actions){
           return actions.order.create({
