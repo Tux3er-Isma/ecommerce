@@ -1,13 +1,9 @@
 ---
 title: Hola
-<<<<<<< HEAD
-description: '100'
+description: Hola
 pubDate: Jul 08 2022
-=======
-description: Necessito dragibus
-pubDate: "3.99"
->>>>>>> fba05a81a51fc3d3c60a47992105fdc5f46ffec2
 heroImage: https://www.hariboencasa.es/media/catalog/product/cache/f7f144860b163c6b6f075760a728b81b/d/r/dragibus_soft_32b_x_180g__950x900_1.webp
+price: 100
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
