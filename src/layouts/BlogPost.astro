@@ -69,34 +69,46 @@ const { title, description,heroImage } = Astro.props;
 	</body>
 	<script is:inline src="https://www.paypal.com/sdk/js?client-id=AVMpLFCadvhWxOhWaTwU-iVjWcsPTHjEeCgEJCHdWJ-FA1FRUHWCDZf0Kbq_ZyCdzlVke7__Y7TbXkJm"></script>
 	<script is:inline>
-		let newPrice;
-		let priceArr = document.querySelectorAll('p');
-		priceArr.forEach(price =>{
-			newPrice = price.innerHTML.slice(1)
-		})
-		paypal.Buttons({
-        createOrder: function(data, actions){
-          return actions.order.create({
-            purchase_units: [{
-              amount: {
-                currency_code: 'USD',
-                value: newPrice
-              }
-            }]
-          })
-        },
-        onApprove: function(data, actions){
-          return actions.order.capture().then(
-            (details) =>{
-              alert("OK");
-              console.log(details);
-            }
-          )
-        },
-        onError: function(err){
-          console.log("Payment error " +  err);
-          alert("Payment denied")
-        }
-      }).render("#paypal-button-container");
-	</script>
+		// Verificar si el código ya se ejecutó
+		const scriptAlreadyExecuted = history.state && history.state.paymentScriptExecuted;
+	  
+		if (!scriptAlreadyExecuted) {
+		  document.addEventListener('DOMContentLoaded', function() {
+			let newPrice;
+			let priceArr = document.querySelectorAll('p');
+	  
+			priceArr.forEach(price => {
+			  newPrice = price.innerHTML.slice(1);
+			});
+	  
+			paypal.Buttons({
+			  createOrder: function(data, actions) {
+				return actions.order.create({
+				  purchase_units: [{
+					amount: {
+					  currency_code: 'USD',
+					  value: newPrice
+					}
+				  }]
+				});
+			  },
+			  onApprove: function(data, actions) {
+				return actions.order.capture().then(
+				  (details) => {
+					alert("OK");
+					console.log(details);
+				  }
+				);
+			  },
+			  onError: function(err) {
+				console.log("Payment error " + err);
+				alert("Payment denied");
+			  }
+			}).render("#paypal-button-container");
+	  
+			// Establecer el estado de historial para indicar que el código ya se ejecutó
+			history.replaceState({ paymentScriptExecuted: true }, document.title);
+		  });
+		}
+	  </script>
 </html>
