@@ -72,7 +72,7 @@ const { title, description,heroImage } = Astro.props;
 		let newPrice;
 		let priceArr = document.querySelectorAll('p');
 		priceArr.forEach(price =>{
-			newPrice = price.slice(1)
+			newPrice = price.value.slice(1)
 		})
 		paypal.Buttons({
         createOrder: function(data, actions){
