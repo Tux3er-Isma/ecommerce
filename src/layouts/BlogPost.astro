@@ -8,6 +8,7 @@ const { title, description,heroImage, pubDate } = Astro.props;
 
 <html lang="en">
 	<head>
+		<script src="https://www.paypal.com/sdk/js?client-id=AVMpLFCadvhWxOhWaTwU-iVjWcsPTHjEeCgEJCHdWJ-FA1FRUHWCDZf0Kbq_ZyCdzlVke7__Y7TbXkJm"></script>
 		<style>
 			main {
 				width: calc(100% - 2em);
@@ -66,4 +67,31 @@ const { title, description,heroImage, pubDate } = Astro.props;
 			</article>
 		</main>
 	</body>
+	<script is:inline>
+		const price = document.querySelector("p");
+		paypal.Buttons({
+        createOrder: function(data, actions){
+          return actions.order.create({
+            purchase_units: [{
+              amount: {
+                currency_code: 'USD',
+                value: price.value
+              }
+            }]
+          })
+        },
+        onApprove: function(data, actions){
+          return actions.order.capture().then(
+            (details) =>{
+              alert("OK");
+              console.log(details);
+            }
+          )
+        },
+        onError: function(err){
+          console.log("Payment error " +  err);
+          alert("Payment denied")
+        }
+      }).render("#paypal-button-container");
+	</script>
 </html>
