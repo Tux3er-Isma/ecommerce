@@ -3,7 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description,heroImage } = Astro.props;
+const { title, description,heroImage, pubDate } = Astro.props;
 ---
 
 <html lang="en">
@@ -62,6 +62,7 @@ const { title, description,heroImage } = Astro.props;
 					</div>
 					<slot />
 				</div>
+				<p>{pubDate}</p>
 			</article>
 		</main>
 	</body>
